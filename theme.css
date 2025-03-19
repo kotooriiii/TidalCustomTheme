@@ -1,0 +1,310 @@
+/*
+{
+  "name": "Blur",
+  "author": "Nick Oates",
+  "description": "Adds backdrop blur behind the player, title bar, and context menus."
+}
+*/
+
+:root {
+    /* Scrollbar */
+    --kl-scrollbar-width: 15px;
+    --kl-scrollbar-color: #ffc8dd;
+    --kl-scrollbar-background-color: #cdb4db;
+	--kl-scrollbar-border-color: #f89cbf;
+
+    /* Sidebar */
+    --kl-sidebar-color: color-mix(
+		in srgb,
+		#f89cbf,
+		transparent 0%
+	);
+
+    /* Home background */
+    --kl-home-background-color: color-mix(
+		in srgb,
+		#fdb7e2,
+		transparent 0%
+	);
+
+    /* Header background */
+    --kl-header-background-color: color-mix(
+		in srgb,
+		#ff90ba,
+		transparent 10%
+	);
+
+    /* Footer background */
+    --kl-footer-background-color: color-mix(
+		in srgb,
+		#ff90ba,
+		transparent 10%
+	);
+
+    /* Popup colors */
+    --kl-popup-background-color: color-mix(
+		in srgb,
+		#f8adff,
+		transparent 2%
+	);
+
+	/* Tile color (like the arrows, notification)  */
+    --kl-tile-background-color: color-mix(
+		in srgb,
+		#f875c6,
+		transparent 0%
+	);
+
+	--kl-text-color: #ff4d7a;
+    --kl-selected-text-color: #2b6eff;
+	--kl-hover-text-color: #b8c0ff;
+	--kl-header-text-color: #846ffb;
+	--kl-artist-color: var(--kl-text-color);  
+
+	--blur-radius: 12px;
+}
+
+/* Text color */
+
+/*Home,Explore,Videos*/
+.wave-text-body-demi,
+/*MyCollection titles*/
+.wave-text-description-demi,
+/*Playlist titles*/
+.wave-text-description-medium,
+/*CreatedBy*/
+._createdBy_13b248a,
+/*Playlist artist name*/
+._item_39605ae,
+/*Time on tracks*/
+._rowContainer_ebb4cfc,
+[class^="_titleColumn_"],
+[class^="_albumText_"],
+[class^="_dateAddedColumn_"],
+[class^="_timeColumn_"],
+[class*="_descriptionText_"],
+[class*="_descriptionText_"]>span,
+[class^="_selectItemTitle_"],
+[class^="_actionTextInner_"]
+{
+	color: var(--kl-text-color) !important;
+}
+
+/* svg */
+._feedBell_95247e3,
+/*Like/Add to playlist icons*/
+svg
+{
+    color: var(--kl-text-color) !important;
+	fill: var(--kl-text-color) !important;
+}
+
+/* Selected category on sidebar */
+._active_3451dba:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e) span
+{
+    color: var(--kl-selected-text-color);
+}
+
+/* Hover category on sidebar */
+:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e):hover,
+[class^="_rowContainer_"]:hover,
+[class^="_tooltipContainer_"]>button:hover,
+[class*="_tooltipText_c55e0f6"],
+[class*="_bottomRightToolTip_"]:after,
+[class*="_tooltipText_c55e0f6"]::after,
+._geometry_ade1caf ._fx_e9c441f,
+button[class*="_feedBell_"]:hover,
+[class*="_selectItem_"]:hover,
+[class^="_fxContainer"][class*="css-"],
+[class*="_createNewPlaylist_"]:hover,
+[class*="_audioQualityContainerHover_"]:hover,
+[class^="_feedSidebarItemDiv_"]:hover,
+[class^="_container_"]>button:hover
+{
+	background-color: var(--kl-hover-text-color) !important;
+}
+
+/* artist title color in playing track */
+.artist-link
+{
+	color: var(--kl-artist-color);
+}
+
+/* playing from ... */
+.wave-text-capital-demi, 
+._title_30ce8e7
+{
+	color: var(--kl-artist-color);
+}
+
+/*MyCollection,PLAYLISTS titles*/
+.wave-text-caption-demi,
+._listHeader_27d5796,
+/*RecentlyPlayed,CustomMixes,YourFavArtists*/
+.wave-text-body-medium, 
+._headerText_81dc97f,
+/* TrackRadio/CreatedByMe/Artist at the top of home screen */
+:is(._shortcutItem_6c8e7b4>:first-child) :nth-child(2),
+[class^="_title_"],
+[class^="_headerColumnSortable_"],
+[class^="_headerColumn_"],
+.wave-text-subheadline-bold,
+.wave-text-large-title-bold,
+[class^="_selectHeader_"]
+{
+	color: var(--kl-header-text-color) !important;
+}
+
+/* artist overlay */
+[class^="_overlay_"]
+{
+	background: linear-gradient(var(--kl-home-background-color), color-mix(
+		in srgb,
+		var(--kl-tile-background-color),
+		transparent 95%
+	));
+} 
+
+/*
+
+ Scrollbar  
+ 
+ */
+#main::-webkit-scrollbar,
+#sidebar::-webkit-scrollbar,
+[class*="_playQueueItemsList_"]::-webkit-scrollbar,
+[class^="_nativeRange_"][type=range]::-webkit-slider
+{
+  width: var(--kl-scrollbar-width); /* Adjust the width of the scrollbar */
+}
+
+/* For the draggable thumb part */
+#main::-webkit-scrollbar-thumb,
+#sidebar::-webkit-scrollbar-thumb,
+[class*="_playQueueItemsList_"]::-webkit-scrollbar-thumb,
+[class^="_nativeRange_"][type=range]::-webkit-slider-thumb
+{
+  background-color: var(--kl-scrollbar-color); /* Thumb color */
+  border: 2px solid var(--kl-scrollbar-border-color); /* Border scrollbar color */
+  border-radius: 20px;
+}
+
+/* For the track (background) of the scrollbar */
+#main::-webkit-scrollbar-track,
+#sidebar::-webkit-scrollbar-track,
+[class*="_playQueueItemsList_"]::-webkit-scrollbar-track,
+[class^="_nativeRange_"][type=range]::-webkit-slider-runnable-track
+ {
+  background-color: var(--kl-scrollbar-background-color); /* Track color */
+  border-radius: 20px;
+}
+[class^="_nativeRange_"][type=range]::-webkit-slider-thumb
+{
+	width: 7px; /* Adjust the width of the volume thumb */
+}
+
+
+/* Sidebar */
+#sidebar,
+#playQueueSidebar,
+#feedSidebar,
+[class^="_smallHeader_"]::before
+{
+ 	background-color: var(--kl-sidebar-color) !important;
+}
+
+/* Home background */
+#main,
+[class^="_smallHeader_"]
+{
+    background: var(--kl-home-background-color) !important;
+}
+
+
+/*
+
+Footer
+
+*/
+[class^="_bar_"]
+{
+	background-color: var(--kl-footer-background-color) !important;
+}
+
+#footerPlayer {
+	backdrop-filter: blur(var(--blur-radius));
+}
+
+#footerPlayer
+{
+ 	background-color: var(--kl-footer-background-color) !important;
+}
+
+.neptune-card,
+[class^="_tooltipContainer_"]>button,
+[class^="_container_"][class*="_fillDark_"]>div,
+[class^="_container_"]>button,
+[class*="_searchFieldWithPopover_"]>div,
+button[class*="_feedBell_"]
+{
+	color: var(--kl-text-color);
+	background-color: var(--kl-tile-background-color)
+}
+
+
+
+
+
+[data-type="page"],
+.__NEPTUNE_PAGE {
+	padding-bottom: 128px !important;
+}
+
+[class^="_containerRow_"] {
+	max-height: none !important;
+}
+
+[class^="_mainContainer_"] {
+	height: 100vh !important;
+	background-color: inherit;
+}
+
+[class^="_bar_"] {
+	position: absolute;
+	z-index: 100;
+	backdrop-filter: blur(var(--blur-radius));
+}
+
+[class^="_sidebarWrapper"],
+[class^="_contentArea"],
+#main {
+	padding-top: 30px;
+}
+
+
+/* popups */
+
+/* 3 dots top left*/
+[class^="_contextMenu"],
+[class^="_subMenu_"],
+[class^="_dialog_"]
+{
+	background-color: var(--kl-popup-background-color) !important;
+}
+
+/* volume bar background */
+[class*="_nativeRange_"]
+{
+	background-color: var(--kl-popup-background-color) !important;
+}
+
+[class^="_sidebarWrapper_"] {
+	padding-bottom: 96px;
+}
+
+/* Blur background of homepage shortcut items */
+@container (width > 200px) {
+	[class*="_shortcutItem_"]::after {
+		backdrop-filter: blur(8px);
+	}
+}
