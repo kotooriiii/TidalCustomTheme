@@ -55,7 +55,7 @@
 		transparent 0%
 	);
 
-	--kl-text-color: #ff4d7a;
+	--kl-text-color: #8a0022;
     --kl-selected-text-color: #2b6eff;
 	--kl-hover-text-color: #b8c0ff;
 	--kl-header-text-color: #846ffb;
@@ -85,7 +85,12 @@
 [class*="_descriptionText_"],
 [class*="_descriptionText_"]>span,
 [class^="_selectItemTitle_"],
-[class^="_actionTextInner_"]
+[class^="_actionTextInner_"],
+[class^="_lyricsText_"]>div,
+[class^="_lyricsText_"]>span,
+.wave-text-headline-bold,
+[class^="_indexNumber_"] 
+
 {
 	color: var(--kl-text-color) !important;
 }
@@ -100,9 +105,19 @@ svg
 }
 
 /* Selected category on sidebar */
-._active_3451dba:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e) span
+._active_3451dba:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e) span,
+[class*=_tableRowIsPlaying_]>div>div>span,
+[class*=_tableRowIsPlaying_]>div>span>a,
+[class*=_tableRowIsPlaying_]>div>a,
+[class*=_tableRowIsPlaying_]>div>time
 {
-    color: var(--kl-selected-text-color);
+    color: var(--kl-selected-text-color) !important;
+}
+
+[class*=_tableRowIsPlaying_]>div>div>button>svg,
+[class*=_tableRowIsPlaying_]>div>span>div>span>svg
+{
+	fill: var(--kl-selected-text-color) !important;
 }
 
 /* Hover category on sidebar */
@@ -119,7 +134,11 @@ button[class*="_feedBell_"]:hover,
 [class*="_createNewPlaylist_"]:hover,
 [class*="_audioQualityContainerHover_"]:hover,
 [class^="_feedSidebarItemDiv_"]:hover,
-[class^="_container_"]>button:hover
+[class^="_container_"]>button:hover,
+[class^="_buttons_"]>button:hover,
+[class^="_tabItem_"]:hover:not([class*="_activeTab_"]) ,
+[class^="_tableRow_"]:hover,
+[class^="_headerButtons_"]>button:hover
 {
 	background-color: var(--kl-hover-text-color) !important;
 }
@@ -145,7 +164,7 @@ button[class*="_feedBell_"]:hover,
 ._headerText_81dc97f,
 /* TrackRadio/CreatedByMe/Artist at the top of home screen */
 :is(._shortcutItem_6c8e7b4>:first-child) :nth-child(2),
-[class^="_title_"],
+[class*="_title_"],
 [class^="_headerColumnSortable_"],
 [class^="_headerColumn_"],
 .wave-text-subheadline-bold,
@@ -156,14 +175,24 @@ button[class*="_feedBell_"]:hover,
 }
 
 /* artist overlay */
-[class^="_overlay_"]
+[class^="_overlay_"],
+[class^="_feed_"] > [class^="_list_"] > [class^="_container_"]> div > div::before
 {
 	background: linear-gradient(var(--kl-home-background-color), color-mix(
 		in srgb,
 		var(--kl-tile-background-color),
-		transparent 95%
+		transparent 90%
 	));
 } 
+
+[class^="_shortcutItem_"]::after
+{
+		background: linear-gradient(var(--kl-home-background-color), color-mix(
+		in srgb,
+		var(--kl-popup-background-color),
+		transparent 1%
+	));
+}
 
 /*
 
@@ -215,7 +244,8 @@ button[class*="_feedBell_"]:hover,
 
 /* Home background */
 #main,
-[class^="_smallHeader_"]
+[class^="_smallHeader_"],
+[class^="_nowPlayingContainer_"]
 {
     background: var(--kl-home-background-color) !important;
 }
@@ -245,13 +275,17 @@ Footer
 [class^="_container_"][class*="_fillDark_"]>div,
 [class^="_container_"]>button,
 [class*="_searchFieldWithPopover_"]>div,
-button[class*="_feedBell_"]
+[class^="_myTracks_"]>[class*="_myTracksFilter_"],
+[class^="_myTracks_"]>[class*="_myTracksFilter_"]>input::placeholder,
+[class^="_container_"] [class*="_searchFieldWithPopover_"] .searchFieldWithinSearchFieldWithPopover,
+button[class*="_feedBell_"],
+[class^="_buttons_"]>button,
+[class^="_headerButtons_"]>button,
+[class^="_shortcutItem_"]>div[class^="_iconWrapper_"]
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color)
 }
-
-
 
 
 
@@ -285,7 +319,7 @@ button[class*="_feedBell_"]
 /* popups */
 
 /* 3 dots top left*/
-[class^="_contextMenu"],
+[class^="_contextMenu_"],
 [class^="_subMenu_"],
 [class^="_dialog_"]
 {
@@ -302,9 +336,27 @@ button[class*="_feedBell_"]
 	padding-bottom: 96px;
 }
 
+/* Remove bottom gradient */
+[class^="_bottomGradient_"]
+{
+	background: none;
+}
+
 /* Blur background of homepage shortcut items */
 @container (width > 200px) {
 	[class*="_shortcutItem_"]::after {
 		backdrop-filter: blur(8px);
 	}
 }
+
+._activeTab_f47dafa
+{
+    background-color: var(--kl-tile-background-color)
+}
+
+._dataContainer_66f4f40
+{
+    margin-top: none !important;
+}
+
+
