@@ -1,6 +1,6 @@
 # TidalCustomTheme
 
-Tidal customizable theme.
+Tidal customizable theme. Default pink. Change as you see fit via root variables.
 
 To install, first get Neptune via https://github.com/uwu/neptune
 
