@@ -51,18 +51,20 @@
 	/* Tile color (like the arrows, notification)  */
     --kl-tile-background-color: color-mix(
 		in srgb,
-		#f875c6,
+		#f89cbf,
 		transparent 0%
 	);
 
 	--kl-text-color: #8a0022;
     --kl-selected-text-color: #2b6eff;
+	--kl-currently-playing-color: #fcffa4;
 	--kl-hover-text-color: #b8c0ff;
 	--kl-header-text-color: #846ffb;
 	--kl-artist-color: var(--kl-text-color);  
 
 	--blur-radius: 12px;
 }
+
 
 /* Text color */
 
@@ -81,6 +83,8 @@
 [class^="_titleColumn_"],
 [class^="_albumText_"],
 [class^="_dateAddedColumn_"],
+[class^="_contributionText_"],
+[class^="_releasedDateColumn_"],
 [class^="_timeColumn_"],
 [class*="_descriptionText_"],
 [class*="_descriptionText_"]>span,
@@ -89,8 +93,13 @@
 [class^="_lyricsText_"]>div,
 [class^="_lyricsText_"]>span,
 .wave-text-headline-bold,
-[class^="_indexNumber_"] 
-
+[class^="_indexNumber_"],
+.wave-text-body-medium,
+div [class*="_searchField_"]::placeholder,
+div [class*="_searchField_"],
+[class^="_smallButtons_"]>button>div>span,
+[class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>h2,
+[class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>div>div>span
 {
 	color: var(--kl-text-color) !important;
 }
@@ -106,18 +115,30 @@ svg
 
 /* Selected category on sidebar */
 ._active_3451dba:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e) span,
-[class*=_tableRowIsPlaying_]>div>div>span,
-[class*=_tableRowIsPlaying_]>div>span>a,
-[class*=_tableRowIsPlaying_]>div>a,
-[class*=_tableRowIsPlaying_]>div>time
+a[class^="_searchPill_"][class*="_active_"] > span
 {
     color: var(--kl-selected-text-color) !important;
 }
+[class*="_tableRowSelected"] {
+  background-color: var(--kl-selected-text-color);
+  border-radius: 20px;  /* Rounded edges */
+}
 
+/* Currently playing */
+[class*=_tableRowIsPlaying_]>div>div>span,
+[class*=_tableRowIsPlaying_]>div>span>a,
+[class*=_tableRowIsPlaying_]>div>a,
+[class*=_tableRowIsPlaying_]>div>time,
+[class*=_tableRowIsPlaying_]>div,
+[class*=_tableRowIsPlaying_]>div>div,
+[class^="_progressBarWrapper_"]
+{
+	color: var(--kl-currently-playing-color) !important;
+}
 [class*=_tableRowIsPlaying_]>div>div>button>svg,
 [class*=_tableRowIsPlaying_]>div>span>div>span>svg
 {
-	fill: var(--kl-selected-text-color) !important;
+	fill: var(--kl-currently-playing-color) !important;
 }
 
 /* Hover category on sidebar */
@@ -134,13 +155,30 @@ button[class*="_feedBell_"]:hover,
 [class*="_createNewPlaylist_"]:hover,
 [class*="_audioQualityContainerHover_"]:hover,
 [class^="_feedSidebarItemDiv_"]:hover,
-[class^="_container_"]>button:hover,
 [class^="_buttons_"]>button:hover,
 [class^="_tabItem_"]:hover:not([class*="_activeTab_"]) ,
-[class^="_tableRow_"]:hover,
-[class^="_headerButtons_"]>button:hover
+[class^="_headerButtons_"]>button:hover,
+[class^="_details_"] > [class*="_contextMenuButton_"]:hover,
+button[class^="_clearRecentSearchesButton"]:hover,
+div[class^="_searchContainer_"]:hover,
+[class^="_container_"]>button[class*="_navigationArrows_"]:hover,
+[class^="_container_"]>button[class*="_primary_"]:hover,
+[class^="_container_"]>button[class*="_secondary_"]:hover,
+[class^="_smallButtons_"] > button:hover,
+[class^="_viewAllButton_"]:hover,
+[class*="_scrollingButton_"]:hover,
+[class^="_searchPills_"]>a[class^="_searchPill_"]:hover:not([class*="_active_"]),
+div[class*="_arrowsContainer_"] > button:hover,
+div[class*="_arrowsContainer_"] >div>button:hover
 {
+	opacity: 1;
 	background-color: var(--kl-hover-text-color) !important;
+}
+[class^="_tableRow_"]:hover
+{
+    opacity: 1;
+	background-color: var(--kl-hover-text-color) !important;
+    border-radius: 20px;  /* Rounded edges */
 }
 
 /* artist title color in playing track */
@@ -157,22 +195,71 @@ button[class*="_feedBell_"]:hover,
 }
 
 /*MyCollection,PLAYLISTS titles*/
-.wave-text-caption-demi,
 ._listHeader_27d5796,
-/*RecentlyPlayed,CustomMixes,YourFavArtists*/
-.wave-text-body-medium, 
 ._headerText_81dc97f,
 /* TrackRadio/CreatedByMe/Artist at the top of home screen */
 :is(._shortcutItem_6c8e7b4>:first-child) :nth-child(2),
 [class*="_title_"],
+[class^="_cardContainer_"]>div[class^="_card_"]>div>div[class^="_textWrapper_"]>span,
 [class^="_headerColumnSortable_"],
 [class^="_headerColumn_"],
 .wave-text-subheadline-bold,
 .wave-text-large-title-bold,
-[class^="_selectHeader_"]
+[class^="_selectHeader_"],
+.playlist-creator[class*="_artistCreatorText_"],
+[class^="_trackList_"]>thead>tr>th>span
 {
 	color: var(--kl-header-text-color) !important;
 }
+
+
+/* overlays */
+:is([class^="_background_"] [class^="_image_"]):before 
+{
+	background-image: none
+}
+
+[class^="_headerContainer_"]>[class^="_background_"]
+{
+	background: var(--kl-home-background-color)
+}
+
+[class^="_detailContainer_"]
+{
+    background-color: var(--kl-tile-background-color);
+    padding: 20px;
+    min-height: 100px;
+    width: auto;  /* Adjust the width */
+    max-width: 400px;  /* Prevents it from being too wide */
+    border-radius: 15px;  /* Rounded corners */
+    box-sizing: border-box;  /* Makes padding part of the width */
+}
+
+[class^="_actionContainer_"]
+{
+	margin-top: 30px;
+}
+
+[class^="_smallButtons_"] 
+{
+    height: 0%;
+}
+
+[class^="_smallButtons_"] > button 
+{
+  background-color: var(--kl-tile-background-color);
+  padding-left: 20px;    
+  padding-right: 20px;    
+  min-height: 60px;     /* Minimum height */
+  max-height: 80px;     /* Maximum height */
+  width: auto;  /* Adjust the width */
+  max-width: 400px;  /* Prevents it from being too wide */
+  border-radius: 15px;  /* Rounded corners */
+  box-sizing: border-box;  /* Makes padding part of the width */
+  white-space: nowrap; /* Prevents text from wrapping onto a new line */
+  position: relative;
+}
+
 
 /* artist overlay */
 [class^="_overlay_"],
@@ -232,7 +319,6 @@ button[class*="_feedBell_"]:hover,
 	width: 7px; /* Adjust the width of the volume thumb */
 }
 
-
 /* Sidebar */
 #sidebar,
 #playQueueSidebar,
@@ -240,14 +326,23 @@ button[class*="_feedBell_"]:hover,
 [class^="_smallHeader_"]::before
 {
  	background-color: var(--kl-sidebar-color) !important;
+	background-image: none;
 }
 
 /* Home background */
 #main,
 [class^="_smallHeader_"],
-[class^="_nowPlayingContainer_"]
+[class^="_nowPlayingContainer_"],
+[class^="_resultsPageWrapper_"] > div > div[class^="_container_"]::before,
+[class^="_resultsPageWrapper_"] > div > div[class^="_container_"]
 {
     background: var(--kl-home-background-color) !important;
+}
+
+/*Searchresult divider why is it there? */
+[class^="_resultsPageWrapper_"] > div > div[class^="_container_"] > div[class^="_divider_"]
+{
+    background-color: transparent !important;
 }
 
 
@@ -273,20 +368,32 @@ Footer
 .neptune-card,
 [class^="_tooltipContainer_"]>button,
 [class^="_container_"][class*="_fillDark_"]>div,
-[class^="_container_"]>button,
 [class*="_searchFieldWithPopover_"]>div,
+#main>div>div[class^="_defaultStyles_"]>div>div[class^="_container_"],
 [class^="_myTracks_"]>[class*="_myTracksFilter_"],
 [class^="_myTracks_"]>[class*="_myTracksFilter_"]>input::placeholder,
 [class^="_container_"] [class*="_searchFieldWithPopover_"] .searchFieldWithinSearchFieldWithPopover,
 button[class*="_feedBell_"],
 [class^="_buttons_"]>button,
 [class^="_headerButtons_"]>button,
-[class^="_shortcutItem_"]>div[class^="_iconWrapper_"]
+[class^="_shortcutItem_"]>div[class^="_iconWrapper_"],
+button[class^="_clearRecentSearchesButton"],
+[class^="_container_"]>button[class*="_navigationArrows_"],
+[class^="_container_"]>button[class*="_primary_"],
+[class^="_container_"]>button[class*="_secondary_"],
+[class^="_viewAllButton_"],
+[class*="_scrollingButton_"],
+[class^="_searchPills_"]>a[class^="_searchPill_"],
+div[class*="_arrowsContainer_"] > button
 {
 	color: var(--kl-text-color);
-	background-color: var(--kl-tile-background-color)
+	background-color: var(--kl-tile-background-color) !important;
 }
 
+button[class^="_clearRecentSearchesButton"]
+{
+    border: none;
+}
 
 
 [data-type="page"],
@@ -321,7 +428,8 @@ button[class*="_feedBell_"],
 /* 3 dots top left*/
 [class^="_contextMenu_"],
 [class^="_subMenu_"],
-[class^="_dialog_"]
+[class^="_dialog_"],
+.popoverWithinSearchFieldWithPopover>div[class^="_container_"]
 {
 	background-color: var(--kl-popup-background-color) !important;
 }
@@ -358,5 +466,3 @@ button[class*="_feedBell_"],
 {
     margin-top: none !important;
 }
-
-
