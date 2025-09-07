@@ -56,9 +56,9 @@
 	);
 
 	--kl-text-color: #8a0022;
-    --kl-selected-text-color: #2b6eff;
+    --kl-selected-text-color: #888af8;
 	--kl-currently-playing-color: #fcffa4;
-	--kl-hover-text-color: #b8c0ff;
+	--kl-hover-text-color: rgb(154, 164, 243);
 	--kl-header-text-color: #846ffb;
 	--kl-artist-color: var(--kl-text-color);  
 
@@ -99,7 +99,16 @@ div [class*="_searchField_"]::placeholder,
 div [class*="_searchField_"],
 [class^="_smallButtons_"]>button>div>span,
 [class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>h2,
-[class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>div>div>span
+[class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>div>div>span,
+[class*="_description_"],
+/* song on artist */
+[class^="_titleColumn_"]>div>span,
+[class^="_buttons_"]>button>span,
+[class^="_buttons_"]>a>span,
+[class^="_primaryButtons_"]>[class^="_marketButton_"]>span,
+[class^="_biography_"]>span>p,
+[class^="_marketLink_"]>span
+
 {
 	color: var(--kl-text-color) !important;
 }
@@ -113,13 +122,17 @@ svg
 	fill: var(--kl-text-color) !important;
 }
 
-/* Selected category on sidebar */
-._active_3451dba:is(a._sidebarItem_730d27e,button._sidebarItem_730d27e) span,
+/* Selected category on sidebar
 a[class^="_searchPill_"][class*="_active_"] > span
 {
     color: var(--kl-selected-text-color) !important;
-}
-[class*="_tableRowSelected"] {
+} */
+
+
+[class*="_tableRowSelected"],
+[class*="_active_"]:is(a[class^="_sidebarItem_"]),
+[class*="_rowContainer"][class*="_selected_"]
+{
   background-color: var(--kl-selected-text-color);
   border-radius: 20px;  /* Rounded edges */
 }
@@ -156,6 +169,7 @@ button[class*="_feedBell_"]:hover,
 [class*="_audioQualityContainerHover_"]:hover,
 [class^="_feedSidebarItemDiv_"]:hover,
 [class^="_buttons_"]>button:hover,
+[class^="_buttons_"]>a:hover,
 [class^="_tabItem_"]:hover:not([class*="_activeTab_"]) ,
 [class^="_headerButtons_"]>button:hover,
 [class^="_details_"] > [class*="_contextMenuButton_"]:hover,
@@ -169,7 +183,9 @@ div[class^="_searchContainer_"]:hover,
 [class*="_scrollingButton_"]:hover,
 [class^="_searchPills_"]>a[class^="_searchPill_"]:hover:not([class*="_active_"]),
 div[class*="_arrowsContainer_"] > button:hover,
-div[class*="_arrowsContainer_"] >div>button:hover
+div[class*="_arrowsContainer_"] >div>button:hover,
+[class^="_primaryButtons_"]>[class^="_marketButton_"]:hover
+
 {
 	opacity: 1;
 	background-color: var(--kl-hover-text-color) !important;
@@ -240,12 +256,14 @@ div[class*="_arrowsContainer_"] >div>button:hover
 	margin-top: 30px;
 }
 
-[class^="_smallButtons_"] 
+[class^="_smallButtons_"]
 {
     height: 0%;
 }
 
-[class^="_smallButtons_"] > button 
+[class^="_smallButtons_"] > button,
+[class^="_actionContainer_"]>[class^="_buttons_"] > button,
+[class^="_actionContainer_"]>[class^="_buttons_"] > a
 {
   background-color: var(--kl-tile-background-color);
   padding-left: 20px;    
@@ -258,6 +276,11 @@ div[class*="_arrowsContainer_"] >div>button:hover
   box-sizing: border-box;  /* Makes padding part of the width */
   white-space: nowrap; /* Prevents text from wrapping onto a new line */
   position: relative;
+}
+[class^="_actionContainer_"]>[class^="_buttons_"] > a,
+[class^="_actionContainer_"]>[class^="_buttons_"] > button
+{
+    justify-content: center;
 }
 
 
@@ -384,7 +407,10 @@ button[class^="_clearRecentSearchesButton"],
 [class^="_viewAllButton_"],
 [class*="_scrollingButton_"],
 [class^="_searchPills_"]>a[class^="_searchPill_"],
-div[class*="_arrowsContainer_"] > button
+div[class*="_arrowsContainer_"] > button,
+[class^="_shortcutItem_"],
+[class*="_addContributionsBanner_"],
+[class^="_primaryButtons_"]>[class^="_marketButton_"]
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color) !important;
