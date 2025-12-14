@@ -20,6 +20,7 @@
 		transparent 0%
 	);
 
+
     /* Home background */
     --kl-home-background-color: color-mix(
 		in srgb,
@@ -107,7 +108,8 @@ div [class*="_searchField_"],
 [class^="_buttons_"]>a>span,
 [class^="_primaryButtons_"]>[class^="_marketButton_"]>span,
 [class^="_biography_"]>span>p,
-[class^="_marketLink_"]>span
+[class^="_marketLink_"]>span,
+[class^="_marketText_"]
 
 {
 	color: var(--kl-text-color) !important;
@@ -131,7 +133,9 @@ a[class^="_searchPill_"][class*="_active_"] > span
 
 [class*="_tableRowSelected"],
 [class*="_active_"]:is(a[class^="_sidebarItem_"]),
-[class*="_rowContainer"][class*="_selected_"]
+[class*="_rowContainer"][class*="_selected_"],
+[class^="_navigationItem_"][class*="_selected_"],
+[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"][class*="_active_"]
 {
   background-color: var(--kl-selected-text-color);
   border-radius: 20px;  /* Rounded edges */
@@ -184,8 +188,11 @@ div[class^="_searchContainer_"]:hover,
 [class^="_searchPills_"]>a[class^="_searchPill_"]:hover:not([class*="_active_"]),
 div[class*="_arrowsContainer_"] > button:hover,
 div[class*="_arrowsContainer_"] >div>button:hover,
-[class^="_primaryButtons_"]>[class^="_marketButton_"]:hover
-
+[class^="_primaryButtons_"]>[class^="_marketButton_"]:hover,
+[class^="_playlistNavigationItem_"]:hover,
+[class^="_navigationItem_"]:hover,
+/* collection -> (pop up of playltist,tracks,etc)*/
+[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"]:hover
 {
 	opacity: 1;
 	background-color: var(--kl-hover-text-color) !important;
@@ -215,10 +222,10 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 ._headerText_81dc97f,
 /* TrackRadio/CreatedByMe/Artist at the top of home screen */
 :is(._shortcutItem_6c8e7b4>:first-child) :nth-child(2),
-[class*="_title_"],
 [class^="_cardContainer_"]>div[class^="_card_"]>div>div[class^="_textWrapper_"]>span,
 [class^="_headerColumnSortable_"],
 [class^="_headerColumn_"],
+[class^="_marketText_"][class*="_paragraph"],
 .wave-text-subheadline-bold,
 .wave-text-large-title-bold,
 [class^="_selectHeader_"],
@@ -235,7 +242,9 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 	background-image: none
 }
 
-[class^="_headerContainer_"]>[class^="_background_"]
+[class^="_headerContainer_"]>[class^="_background_"],
+[class^="_thumbnail_"],
+[class^="_profilePicture_"]
 {
 	background: var(--kl-home-background-color)
 }
@@ -346,6 +355,8 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 #sidebar,
 #playQueueSidebar,
 #feedSidebar,
+[class^="_sidebar_"],
+[class^="_sidebar_"]>[class^="_sectionHeader_"],
 [class^="_smallHeader_"]::before
 {
  	background-color: var(--kl-sidebar-color) !important;
@@ -410,7 +421,8 @@ button[class^="_clearRecentSearchesButton"],
 div[class*="_arrowsContainer_"] > button,
 [class^="_shortcutItem_"],
 [class*="_addContributionsBanner_"],
-[class^="_primaryButtons_"]>[class^="_marketButton_"]
+[class^="_primaryButtons_"]>[class^="_marketButton_"],
+h2[data-test="artist-name"]
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color) !important;
@@ -442,11 +454,7 @@ button[class^="_clearRecentSearchesButton"]
 	backdrop-filter: blur(var(--blur-radius));
 }
 
-[class^="_sidebarWrapper"],
-[class^="_contentArea"],
-#main {
-	padding-top: 30px;
-}
+
 
 
 /* popups */
@@ -464,6 +472,12 @@ button[class^="_clearRecentSearchesButton"]
 [class*="_nativeRange_"]
 {
 	background-color: var(--kl-popup-background-color) !important;
+}
+
+/* collection -> (pop up of playltist,tracks,etc)*/
+[class^="_collectionWrapper_"]>[class^="_submenu_"]
+{
+    background-color: var(--kl-popup-background-color) !important;
 }
 
 [class^="_sidebarWrapper_"] {
@@ -492,3 +506,35 @@ button[class^="_clearRecentSearchesButton"]
 {
     margin-top: none !important;
 }
+
+/* remove top header on the home page (back/front arrows + search) */
+[class^="_contentArea_"] > [class^="_header_"] {
+  background-color: var(--kl-sidebar-color); /* slight tint */
+  backdrop-filter: blur(8px);
+  
+}
+
+[class^="_sidebarWrapper"],
+/* top header */
+ div[class^="_containerRow_"]> div[class^="_contentArea_"],
+/* for the main content in the screen like the body */
+#main > div.for-cypress__react-router--loaded.mainContent
+{
+	padding: 30px 0 0 0 !important;
+}
+
+/* idk who decided to add a 1px line between header adn sidebar but this is the fix */
+[class^="_sidebarWrapper_"]:after
+{
+    width:0px;
+}
+
+[class^="_viewAllButton_"] {
+    padding: 6px 12px;               /* vertical | horizontal padding */
+    background-color: var(--kl-hover-text-color);
+    border-radius: 9999px;           /* makes it fully rounded (pill/oval) */
+    transition: background 0.2s ease; /* smooth hover effect */
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;       /* inline with text, but flex container */
+  }
