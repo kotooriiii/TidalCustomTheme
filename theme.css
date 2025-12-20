@@ -109,7 +109,8 @@ div [class*="_searchField_"],
 [class^="_primaryButtons_"]>[class^="_marketButton_"]>span,
 [class^="_biography_"]>span>p,
 [class^="_marketLink_"]>span,
-[class^="_marketText_"]
+[class^="_marketText_"],
+[class*="wave-text-subheadline-bold-small"]
 
 {
 	color: var(--kl-text-color) !important;
@@ -244,7 +245,8 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 
 [class^="_headerContainer_"]>[class^="_background_"],
 [class^="_thumbnail_"],
-[class^="_profilePicture_"]
+[class^="_profilePicture_"],
+div[data-test="feed-interval"]>div
 {
 	background: var(--kl-home-background-color)
 }
@@ -357,6 +359,7 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 #feedSidebar,
 [class^="_sidebar_"],
 [class^="_sidebar_"]>[class^="_sectionHeader_"],
+[class^="_container_"]>[class^="_sectionHeader_"],
 [class^="_smallHeader_"]::before
 {
  	background-color: var(--kl-sidebar-color) !important;
