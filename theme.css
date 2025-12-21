@@ -193,7 +193,8 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 [class^="_playlistNavigationItem_"]:hover,
 [class^="_navigationItem_"]:hover,
 /* collection -> (pop up of playltist,tracks,etc)*/
-[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"]:hover
+[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"]:hover,
+div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
 {
 	opacity: 1;
 	background-color: var(--kl-hover-text-color) !important;
@@ -425,7 +426,8 @@ div[class*="_arrowsContainer_"] > button,
 [class^="_shortcutItem_"],
 [class*="_addContributionsBanner_"],
 [class^="_primaryButtons_"]>[class^="_marketButton_"],
-h2[data-test="artist-name"]
+h2[data-test="artist-name"],
+div[data-test="page-links-cloud-row"]>a /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color) !important;
