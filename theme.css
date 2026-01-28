@@ -402,7 +402,6 @@ Footer
 {
  	background-color: var(--kl-footer-background-color) !important;
 }
-
 .neptune-card,
 [class^="_tooltipContainer_"]>button,
 [class^="_container_"][class*="_fillDark_"]>div,
@@ -427,7 +426,8 @@ div[class*="_arrowsContainer_"] > button,
 [class*="_addContributionsBanner_"],
 [class^="_primaryButtons_"]>[class^="_marketButton_"],
 h2[data-test="artist-name"],
-div[data-test="page-links-cloud-row"]>a /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
+div[data-test="page-links-cloud-row"]>a, /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
+aside[id="sidebar"] > div[class^="_container_"] > div > div > div[class^="_sectionHeader_"] /* all playlists header in sidebar */
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color) !important;
