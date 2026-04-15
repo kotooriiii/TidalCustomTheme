@@ -197,8 +197,11 @@ div[class*="_arrowsContainer_"] >div>button:hover,
 div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
 {
 	opacity: 1;
+    background: none !important;
 	background-color: var(--kl-hover-text-color) !important;
 }
+
+
 [class^="_tableRow_"]:hover
 {
     opacity: 1;
@@ -247,9 +250,10 @@ div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop
 [class^="_headerContainer_"]>[class^="_background_"],
 [class^="_thumbnail_"],
 [class^="_profilePicture_"],
-div[data-test="feed-interval"]>div
+div[data-test="feed-interval"]>div,
+#nowPlaying > div[class^="div._background"]
 {
-	background: var(--kl-home-background-color)
+	background: var(--kl-home-background-color) !important
 }
 
 [class^="_detailContainer_"]
@@ -394,13 +398,13 @@ Footer
 	background-color: var(--kl-footer-background-color) !important;
 }
 
-#footerPlayer {
-	backdrop-filter: blur(var(--blur-radius));
-}
-
 #footerPlayer
 {
  	background-color: var(--kl-footer-background-color) !important;
+    backdrop-filter: blur(var(--blur-radius));
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 .neptune-card,
 [class^="_tooltipContainer_"]>button,
