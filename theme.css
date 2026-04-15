@@ -99,6 +99,8 @@
 div [class*="_searchField_"]::placeholder,
 div [class*="_searchField_"],
 [class^="_smallButtons_"]>button>div>span,
+[class^="_smallButtons_"] >div> button>div>span,
+#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button,
 [class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>h2,
 [class^="_headerContainer_"]>[class^="_dataContainer_"]>[class^="_detailContainer"]>div>div>span,
 [class*="_description_"],
@@ -110,8 +112,10 @@ div [class*="_searchField_"],
 [class^="_biography_"]>span>p,
 [class^="_marketLink_"]>span,
 [class^="_marketText_"],
-[class*="wave-text-subheadline-bold-small"]
-
+[class*="wave-text-subheadline-bold-small"],
+#sidebar-content > a[data-test="sidebar-feed"] > span[class*="_badgeCounter_"],
+div[class*="ALBUM_HEADER"] > div > div[class^="_smallHeader_"] > div[class^="_smallButtons_"] > div > button> div > span,
+div[class*="ALBUM_HEADER"] > div > div[class^="_smallHeader_"] > div[class^="_textContainer_"] > h2
 {
 	color: var(--kl-text-color) !important;
 }
@@ -136,9 +140,11 @@ a[class^="_searchPill_"][class*="_active_"] > span
 [class*="_active_"]:is(a[class^="_sidebarItem_"]),
 [class*="_rowContainer"][class*="_selected_"],
 [class^="_navigationItem_"][class*="_selected_"],
-[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"][class*="_active_"]
+#sidebar > div[class^="_container_"] > div[class^="_scrollableContent"] > div:nth-child(1) > nav[aria-label="Playlists"] > a[class^="_contentItem"][class*="_selected"],
+[class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"][class*="_active_"],
+#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button[aria-pressed="true"]
 {
-  background-color: var(--kl-selected-text-color);
+  background-color: var(--kl-selected-text-color); 
   border-radius: 20px;  /* Rounded edges */
 }
 
@@ -177,12 +183,14 @@ button[class*="_feedBell_"]:hover,
 [class^="_buttons_"]>a:hover,
 [class^="_tabItem_"]:hover:not([class*="_activeTab_"]) ,
 [class^="_headerButtons_"]>button:hover,
+#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button:hover,
 [class^="_details_"] > [class*="_contextMenuButton_"]:hover,
 button[class^="_clearRecentSearchesButton"]:hover,
 div[class^="_searchContainer_"]:hover,
 [class^="_container_"]>button[class*="_navigationArrows_"]:hover,
 [class^="_container_"]>button[class*="_primary_"]:hover,
 [class^="_container_"]>button[class*="_secondary_"]:hover,
+[class^="_smallButtons_"] > div > button:hover,
 [class^="_smallButtons_"] > button:hover,
 [class^="_viewAllButton_"]:hover,
 [class*="_scrollingButton_"]:hover,
@@ -191,7 +199,8 @@ div[class*="_arrowsContainer_"] > button:hover,
 div[class*="_arrowsContainer_"] >div>button:hover,
 [class^="_primaryButtons_"]>[class^="_marketButton_"]:hover,
 [class^="_playlistNavigationItem_"]:hover,
-[class^="_navigationItem_"]:hover,
+[class^="_navigationItem_"]:not([class*="_selected_"]):hover,
+#sidebar > div[class^="_container_"] > div[class^="_scrollableContent"] > div:nth-child(1) > nav[aria-label="Playlists"] > a[class^="_contentItem"]:not([class*="_selected"]):hover,
 /* collection -> (pop up of playltist,tracks,etc)*/
 [class^="_collectionWrapper_"]>[class^="_submenu_"]>[class^="_submenuItem_"]:hover,
 div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
@@ -251,7 +260,8 @@ div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop
 [class^="_thumbnail_"],
 [class^="_profilePicture_"],
 div[data-test="feed-interval"]>div,
-#nowPlaying > div[class^="div._background"]
+#nowPlaying > div[class^="div._background"],
+#sidebar-content > a[data-test="sidebar-feed"] > span[class*="_badgeCounter_"]
 {
 	background: var(--kl-home-background-color) !important
 }
@@ -277,17 +287,19 @@ div[data-test="feed-interval"]>div,
     height: 0%;
 }
 
+[class^="_smallButtons_"] > div > button,
 [class^="_smallButtons_"] > button,
 [class^="_actionContainer_"]>[class^="_buttons_"] > button,
 [class^="_actionContainer_"]>[class^="_buttons_"] > a
 {
   background-color: var(--kl-tile-background-color);
-  padding-left: 20px;    
-  padding-right: 20px;    
-  min-height: 60px;     /* Minimum height */
+  justify-content: center;
+  padding-left: 25px;    
+  padding-right: 25px;    
+  min-height: 40px;     /* Minimum height */
   max-height: 80px;     /* Maximum height */
   width: auto;  /* Adjust the width */
-  max-width: 400px;  /* Prevents it from being too wide */
+  max-width: 200px;  /* Prevents it from being too wide */
   border-radius: 15px;  /* Rounded corners */
   box-sizing: border-box;  /* Makes padding part of the width */
   white-space: nowrap; /* Prevents text from wrapping onto a new line */
@@ -427,6 +439,7 @@ button[class^="_clearRecentSearchesButton"],
 [class^="_searchPills_"]>a[class^="_searchPill_"],
 div[class*="_arrowsContainer_"] > button,
 [class^="_shortcutItem_"],
+#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button[aria-pressed="false"],
 [class*="_addContributionsBanner_"],
 [class^="_primaryButtons_"]>[class^="_marketButton_"],
 h2[data-test="artist-name"],
@@ -545,5 +558,6 @@ button[class^="_clearRecentSearchesButton"]
     transition: background 0.2s ease; /* smooth hover effect */
     align-items: center;
     justify-content: center;
+	height: 24px;
     display: inline-flex;       /* inline with text, but flex container */
   }
