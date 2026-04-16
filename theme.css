@@ -169,10 +169,11 @@ a[class^="_searchPill_"][class*="_active_"] > span
 :is(a._sidebarItem_730d27e,button._sidebarItem_730d27e):hover,
 [class^="_rowContainer_"]:hover,
 [class^="_tooltipContainer_"]>button:hover,
-[class*="_tooltipText_c55e0f6"],
+[class*="_tooltipText_"],
 [class*="_bottomRightToolTip_"]:after,
-[class*="_tooltipText_c55e0f6"]::after,
-._geometry_ade1caf ._fx_e9c441f,
+[class*="_tooltipText_"]::after,
+[class^="_favoriteButtonContainer_"]>button:hover,
+[class^="_playButtonContainer_"]>button>div>div>div>div:hover,
 button[class*="_feedBell_"]:hover,
 [class*="_selectItem_"]:hover,
 [class^="_fxContainer"][class*="css-"],
@@ -418,6 +419,7 @@ Footer
     left: 0px;
     right: 0px;
 }
+
 .neptune-card,
 [class^="_tooltipContainer_"]>button,
 [class^="_container_"][class*="_fillDark_"]>div,
@@ -444,7 +446,9 @@ div[class*="_arrowsContainer_"] > button,
 [class^="_primaryButtons_"]>[class^="_marketButton_"],
 h2[data-test="artist-name"],
 div[data-test="page-links-cloud-row"]>a, /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
-aside[id="sidebar"] > div[class^="_container_"] > div > div > div[class^="_sectionHeader_"] /* all playlists header in sidebar */
+aside[id="sidebar"] > div[class^="_container_"] > div > div > div[class^="_sectionHeader_"], /* all playlists header in sidebar */
+[class^="_favoriteButtonContainer_"]>button,
+[class^="_playButtonContainer_"]>button>div>div>div>div
 {
 	color: var(--kl-text-color);
 	background-color: var(--kl-tile-background-color) !important;
@@ -561,3 +565,4 @@ button[class^="_clearRecentSearchesButton"]
 	height: 24px;
     display: inline-flex;       /* inline with text, but flex container */
   }
+
