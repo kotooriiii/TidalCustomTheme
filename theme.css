@@ -261,7 +261,7 @@ div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop
 [class^="_thumbnail_"],
 [class^="_profilePicture_"],
 div[data-test="feed-interval"]>div,
-#nowPlaying > div[class^="div._background"],
+#nowPlaying > div[class^="_background"],
 #sidebar-content > a[data-test="sidebar-feed"] > span[class*="_badgeCounter_"]
 {
 	background: var(--kl-home-background-color) !important
