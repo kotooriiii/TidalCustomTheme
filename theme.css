@@ -57,10 +57,10 @@
 	);
 
 	--kl-text-color: #8a0022;
-    --kl-selected-text-color: #888af8;
+    --kl-selected-text-color: rgb(154, 164, 243);
 	--kl-currently-playing-color: #fcffa4;
-	--kl-hover-text-color: rgb(154, 164, 243);
-	--kl-header-text-color: #846ffb;
+	--kl-hover-text-color: rgb(209, 178, 250);
+	--kl-header-text-color: #6f9bfb;
 	--kl-artist-color: var(--kl-text-color);  
 
 	--blur-radius: 12px;
@@ -184,7 +184,7 @@ button[class*="_feedBell_"]:hover,
 [class^="_buttons_"]>a:hover,
 [class^="_tabItem_"]:hover:not([class*="_activeTab_"]) ,
 [class^="_headerButtons_"]>button:hover,
-#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button:hover,
+#nowPlaying > header > div[class^="_buttons_"] > div[class^="_contentButtons_"] > button[aria-pressed="false"]:hover,
 [class^="_details_"] > [class*="_contextMenuButton_"]:hover,
 button[class^="_clearRecentSearchesButton"]:hover,
 div[class^="_searchContainer_"]:hover,
@@ -566,4 +566,3 @@ button[class^="_clearRecentSearchesButton"]
 	height: 24px;
     display: inline-flex;       /* inline with text, but flex container */
   }
-
