@@ -414,6 +414,7 @@ Footer
 #footerPlayer
 {
  	background-color: var(--kl-footer-background-color) !important;
+    background: none;
     backdrop-filter: blur(var(--blur-radius));
     bottom: 0px;
     left: 0px;
