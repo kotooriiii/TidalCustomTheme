@@ -566,3 +566,9 @@ button[class^="_clearRecentSearchesButton"]
 	height: 24px;
     display: inline-flex;       /* inline with text, but flex container */
   }
+
+  #main > div.for-cypress__react-router--loaded.mainContent > div > div
+  {
+	margin-bottom: 60px;
+	padding-bottom: 0px;
+  }
