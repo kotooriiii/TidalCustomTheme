@@ -262,7 +262,8 @@ div[data-test="page-links-cloud-row"]>:hover /*explore buttons i.e hip hop , pop
 [class^="_profilePicture_"],
 div[data-test="feed-interval"]>div,
 #nowPlaying > div[class^="_background"],
-#sidebar-content > a[data-test="sidebar-feed"] > span[class*="_badgeCounter_"]
+#sidebar-content > a[data-test="sidebar-feed"] > span[class*="_badgeCounter_"],
+#mainHeader > div > [class*="_container_"][class*="_navHidden_"] > button
 {
 	background: var(--kl-home-background-color) !important
 }
@@ -420,6 +421,11 @@ Footer
     left: 0px;
     right: 0px;
 }
+[class^="_player_"]:after
+{
+	background: none;
+	backdrop-filter: none;
+} 
 
 .neptune-card,
 [class^="_tooltipContainer_"]>button,
@@ -447,7 +453,7 @@ div[class*="_arrowsContainer_"] > button,
 [class^="_primaryButtons_"]>[class^="_marketButton_"],
 h2[data-test="artist-name"],
 div[data-test="page-links-cloud-row"]>a, /*explore buttons i.e hip hop , pop, holidays, for djs, etc */
-aside[id="sidebar"] > div[class^="_container_"] > div > div > div[class^="_sectionHeader_"], /* all playlists header in sidebar */
+#sidebar > div[class^="_listSection_"] > div > div > div:nth-child(1) > div[class^="_sectionHeader_"], /* all playlists header in sidebar */
 [class^="_favoriteButtonContainer_"]>button,
 [class^="_playButtonContainer_"]>button>div>div>div>div
 {
@@ -571,4 +577,9 @@ button[class^="_clearRecentSearchesButton"]
   {
 	margin-bottom: 60px;
 	padding-bottom: 0px;
+  }
+
+  #mainHeader > div > [class*="_container_"][class*="_navHidden_"]
+  {
+	background: none
   }
